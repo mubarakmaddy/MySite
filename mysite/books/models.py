@@ -11,5 +11,10 @@ class Book(models.Model):
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     price = models.CharField(max_length=100)
-    typr = models.CharField(max_length=100)
+    type = models.CharField(max_length=100)
 
+
+class FavouriteBooks(models.Model):
+    bookid = models.IntegerField(default=0)
+    name = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
