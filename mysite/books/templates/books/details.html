@@ -1,6 +1,25 @@
-<h1>{{ Book.book_name }}</h1>
-<ul>
-{% for choice in book.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
-{% endfor %}
-</ul>
+<!--<h1>{{ book }}</h1>-->
+<!--<ul>-->
+<!--{% for choice in book.all %}-->
+    <!--<li>{{ choice.name }}</li>-->
+<!--{% endfor %}-->
+<!--</ul>-->
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'books/style.css' %}" >
+    </head>
+    <body class="details-body">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'books:index' %}">The Books Store</a>
+            </div>
+        </nav>
+        <h1 class="book-header">{{ book }}</h1>
+    </body>
+
+
+</html>
+
