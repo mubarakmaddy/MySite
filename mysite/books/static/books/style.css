@@ -1,10 +1,10 @@
 body{
-    background: white url("black.jpg");
+    background: white;
     background-size: 1500px;
 }
 
 a{
-    color: white;
+    color: 343a40;
     text-decoration: none;
     font-size: 20px;
     font-family: monospace;
@@ -20,24 +20,35 @@ li{
 }
 
 .bg-dark{
-    background-color: dimgrey;
     height: 50px;
 
 }
 .book-header{
-    color: white;
+    color: 343a40;
     font-size: 20px;
     font-family: monospace;
     padding: 50px;
 }
 .details-body{
-    background: black;
+    background: white;
 }
 
 .nav-link{
     font-size: 19px;
 }
-.navbar-right{
-
+.navbar-nav{
+    padding: 0px 15px 0px 0px;
 
 }
+.btn-outline-secondary {
+    color: #ffffff;
+    padding-top: 5px;
+}
+.btn-primary{
+    float: right;
+    background-color: 343a40;
+    margin-right: 80px;
+    background-color: 343a40;
+
+}
+
