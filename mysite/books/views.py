@@ -1,12 +1,12 @@
-# from django.shortcuts import render
-#
-# # Create your views here.
-# #Front end
-# from django.http import HttpResponse
-# from django.shortcuts import get_object_or_404, render
-#
-# from .models import Book
-#
+from django.shortcuts import render
+
+# Create your views here.
+#Front end
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+
+from .models import Book
+
 #
 # def index(request):
 #     all_books_list = Book.objects.all()
@@ -30,7 +30,7 @@
 from django.views import generic
 from .models import Book
 from django.views.generic.edit import CreateView
-
+from django.http import HttpResponse
 class IndexView(generic.ListView):
     template_name = 'books/index.html'
 
@@ -42,7 +42,12 @@ class BookCreate(CreateView):
     model = Book
     fields = ['name', 'author', 'price', 'type', 'book_image']
 
+
 class DetailView(generic.DetailView):
     model = Book
     template_name = 'books/details.html'
 
+
+class Test:
+    def test(self):
+        return HttpResponse("hjhj")
