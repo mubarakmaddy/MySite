@@ -1,92 +1,90 @@
-
 {% extends 'books/base.html' %}
 
 {% block body%}
 
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
 
 
-    <body>
+
 <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Book</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Book</button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Add Book</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form-group" action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Book Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Book Name">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">L̥
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Add Book</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="form-group row">
-                <label for="exampleFormControlInput1" class="col-sm-3 col-form-label">Written By</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="author" placeholder="Author">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="exampleFormControlInput1" class="col-sm-3 col-form-label">Book Price</label>
-                <div class="col-sm-3">
-                    <input type="number" class="form-control" id="price" placeholder="₹">
-                </div>
-            </div>
+            <div class="modal-body">
+                <form class="form-group" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Book Name</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Book Name">
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleFormControlInput1" class="col-sm-3 col-form-label">Written By</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="author" placeholder="Author">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleFormControlInput1" class="col-sm-3 col-form-label">Book Price</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" id="price" placeholder="₹">
+                        </div>
+                    </div>
 
-            <div class="form-group row" >
-                <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Book Category</label>
-                <div class="col-sm-5" style="margin-left: -40px;">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Category</option>
-                    <option>Fiction</option>
-                    <option>Biography</option>
-                    <option>Non-Fiction</option>
-                </select>
-                </div>
+                    <div class="form-group row">
+                        <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Book Category</label>
+                        <div class="col-sm-5" style="margin-left: -40px;">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Category</option>
+                                <option>Fiction</option>
+                                <option>Biography</option>
+                                <option>Non-Fiction</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+
             </div>
-
-
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary">Save Book</button>
-      </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary">Save Book</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-    </body>
-        {% if object_list %}
-            <ul class="book_list">
-            {% for book in object_list %}
-                <img src="{{book.book_image}}" >
-                <li><a href="/books/{{ book.id }}/  ">{{ book.name }}</a></li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No books are available.</p>
-        {% endif %}
+{% if object_list %}
+<ul class="book_list">
+    {% for book in object_list %}
+    <img src="{{book.book_image}}">
+    <li><a href="/books/{{ book.id }}/  ">{{ book.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No books are available.</p>
+{% endif %}
 
 
-
-    </body>
+</body>
 </html>
 {%endblock%}
 

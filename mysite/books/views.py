@@ -31,6 +31,8 @@ from django.views import generic
 from .models import Book
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
+
+
 class IndexView(generic.ListView):
     template_name = 'books/index.html'
 
@@ -50,4 +52,4 @@ class DetailView(generic.DetailView):
 
 class Test:
     def test(self):
-        return HttpResponse("hjhj")
+        return HttpResponse("This is Test Page")

@@ -7,6 +7,7 @@ app_name = 'books'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+    path('test', views.Test.test)
     # path('<int:book_id>/info/', views.info, name='detail info'),
     # path('<int:book_id>/info/read/', views.read, name='reading'),
 ]

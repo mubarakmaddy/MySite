@@ -20,10 +20,11 @@ from .views import home,emp
 from books.views import Test
 
 urlpatterns = [
-    # path('books/', include('books.urls')),
-    # path('admin/', admin.site.urls),
-    path('home', home, name='home'),
-    path('test', Test.test(), name='test')
+    path('blog/', include('blog.urls')),
+    path('books/', include('books.urls')),
+    path('admin/', admin.site.urls),
+
+
 
 ]
 
