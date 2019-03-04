@@ -5,52 +5,47 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
 
-
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Book</button>
+<button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal" type="button">Add Book</button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+     tabindex="-1">
     <div class="modal-dialog" role="document">L̥
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">Add Book</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-group" action="" method="post" enctype="multipart/form-data">
+                <form action="" class="form-group" enctype="multipart/form-data" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Book Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Book Name">
+                        <input class="form-control" id="exampleFormControlInput1" placeholder="Book Name" type="text">
                     </div>
                     <div class="form-group row">
-                        <label for="exampleFormControlInput1" class="col-sm-3 col-form-label">Written By</label>
+                        <label class="col-sm-3 col-form-label" for="exampleFormControlInput1">Written By</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="author" placeholder="Author">
+                            <input class="form-control" id="author" placeholder="Author" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleFormControlInput1" class="col-sm-3 col-form-label">Book Price</label>
+                        <label class="col-sm-3 col-form-label" for="exampleFormControlInput1">Book Price</label>
                         <div class="col-sm-3">
-                            <input type="number" class="form-control" id="price" placeholder="₹">
+                            <input class="form-control" id="price" placeholder="₹" type="number">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Book Category</label>
+                        <label class="col-sm-4 col-form-label" for="exampleFormControlSelect1">Book Category</label>
                         <div class="col-sm-5" style="margin-left: -40px;">
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option>Category</option>
@@ -65,8 +60,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-secondary">Save Book</button>
+                <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-secondary" type="button">Save Book</button>
             </div>
         </div>
     </div>
@@ -75,8 +70,21 @@
 {% if object_list %}
 <ul class="book_list">
     {% for book in object_list %}
-    <img src="{{book.book_image}}">
-    <li><a href="/books/{{ book.id }}/  ">{{ book.name }}</a></li>
+
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="/books/{{ book.id }}/">{{ book.name }}</a>
+                <small class="text-muted">₹ {{ book.price }}</small>
+            </div>
+            <div>
+                <small class="text-muted">By</small>
+                <h4><a class="article-title">{{ book.author }}</a></h4>
+            </div>
+
+            <p class="article-content">{{ book.type }}</p>
+        </div>
+    </article>
     {% endfor %}
 </ul>
 {% else %}

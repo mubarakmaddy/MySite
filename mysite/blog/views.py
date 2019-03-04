@@ -1,27 +1,10 @@
 from django.shortcuts import render
+from .models import Post
 
-from .models import PostModel
 
+def home(request):
 
-def post_model_lis_view(request):
-    qs = PostModel.objects.all()
-    # print(request.user.is_authenticated)
     context = {
-
-        "object_list": qs
+        'posts': Post.objects.all()
     }
-
-    template = "blog/list-view.html"
-
-    return render(request, template, context)
-
-def post_model_detailed_view(request):
-
-    qs = PostModel.objects.all()
-    context = {
-
-
-    }
-    template = "blog/detailed-view.html"
-
-    return render(request, template, context)
+    return render(request, 'blog/list-view.html', context)
