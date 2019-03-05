@@ -1,16 +1,9 @@
-from django.http import HttpResponse
-
+from django.shortcuts import render
 
 def home(request):
-    return HttpResponse("<h1>Hello World</h1>")
 
+    template = 'mysite/home.html'
+    return render(request, template)
 
-def emp(request):
-    return HttpResponse("hsdj")
-
-
-class Home():
-    def as_view(request):
-        return HttpResponse("<h1>Hello World</h1>")
 
 
