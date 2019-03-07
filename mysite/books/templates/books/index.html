@@ -1,11 +1,13 @@
 {% extends 'mysite/base.html' %}
 
+{% block top %}
+<!--<a href="#" class="btn btn-secondary btn-lg " role="button" aria-pressed="true">Add Book</a>-->
+{% endblock %}
+
 {% block body %}
 
-<!-- Button trigger modal -->
-<div id="add-book">{% block add-book %}{% endblock %}</div>
-
 {% if object_list %}
+
 <ul class="book_list">
     {% for book in object_list %}
 
@@ -16,8 +18,10 @@
                 <small class="text-muted">₹ {{ book.price }}</small>
             </div>
             <div>
-                <small class="text-muted">By</small>
-                <h4><a class="article-title">{{ book.author }}</a></h4>
+                <p>
+                    <small class="text-muted">By</small>
+                    <a class="article-title">{{ book.author }}</a>
+                </p>
             </div>
 
             <p class="article-content">{{ book.type }}</p>

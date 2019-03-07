@@ -1,18 +1,27 @@
-{% extends "blog/base.html" %}
+{% extends 'mysite/base.html' %}
 
-{% block blog-list %}
-{% for object in posts %}
-<article class="media content-section">
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="#">{{ object.author }}</a>
-            <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
+
+
+{% block top %}
+<!--<a href="#" class="btn btn-secondary btn-lg " role="button" aria-pressed="true">Post</a>-->
+{% endblock %}
+
+{% block body %}
+<ul class="blog_list">
+    {% for object in posts %}
+
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
+                <small class="text-muted">By {{ object.author }}</small>
+                <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
+            </div>
+            <p class="article-content">{{ object.content }}</p>
         </div>
-        <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
-        <p class="article-content">{{ object.content }}</p>
-    </div>
-</article>
-{% endfor %}
+    </article>
+    {% endfor %}
+</ul>
 {% endblock  %}  <!--no need to use content after endblock-->
 
 
