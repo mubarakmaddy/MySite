@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
-{% block content %}
+
+{% block blog-list %}
 {% for object in posts %}
 <article class="media content-section">
     <div class="media-body">
@@ -12,7 +13,7 @@
     </div>
 </article>
 {% endfor %}
-{% endblock content %}  <!--no need to use content after endblock-->
+{% endblock  %}  <!--no need to use content after endblock-->
 
 
 
