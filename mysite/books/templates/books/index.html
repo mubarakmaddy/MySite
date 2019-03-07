@@ -1,9 +1,9 @@
 {% extends 'mysite/base.html' %}
 
-{% block body%}
+{% block body %}
 
 <!-- Button trigger modal -->
-<button class="btn btn-primary" data-target="exampleModal" data-toggle="modal" type="button">Add Book</button>
+<div id="add-book">{% block add-book %}{% endblock %}</div>
 
 {% if object_list %}
 <ul class="book_list">
