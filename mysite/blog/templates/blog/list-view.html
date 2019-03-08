@@ -1,23 +1,21 @@
 {% extends 'mysite/base.html' %}
 
-
-
 {% block top %}
-<!--<a href="#" class="btn btn-secondary btn-lg " role="button" aria-pressed="true">Post</a>-->
+<a aria-pressed="true" class="btn btn-secondary btn-lg " href="{% url 'blog:blog-create' %}" role="button">+ Post</a>
 {% endblock %}
 
 {% block body %}
 <ul class="blog_list">
     {% for object in posts %}
-
     <article class="media content-section">
         <div class="media-body">
             <div class="article-metadata">
-                <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
+                <a class="mr-2" href="/blog/{{ object.id }}/">{{ object.title }}</a>
+            </div>
+            <p>
                 <small class="text-muted">By {{ object.author }}</small>
                 <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
-            </div>
-            <p class="article-content">{{ object.content }}</p>
+            </p>
         </div>
     </article>
     {% endfor %}

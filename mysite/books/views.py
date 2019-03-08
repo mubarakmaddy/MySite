@@ -1,11 +1,5 @@
-from django.shortcuts import render
-
 # Create your views here.
-#Front end
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
-
-from .models import Book
+# Front end
 
 #
 # def index(request):
@@ -27,29 +21,60 @@ from .models import Book
 #     return HttpResponse("<h2> Reading book no %s </h2>" % str(book_id))
 
 
-from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
+
 from .models import Book
-from django.views.generic.edit import CreateView
-from django.http import HttpResponse
 
 
-class IndexView(generic.ListView):
-    template_name = 'books/index.html'
-
-    def get_queryset(self):
-        return Book.objects.all()
-
-
-class BookCreate(CreateView):
+class IndexView(ListView):
     model = Book
-    fields = ['name', 'author', 'price', 'type', 'book_image']
+    template_name = 'books/index.html'
+    ordering = ['-id']
 
 
-class DetailView(generic.DetailView):
+class BookCreate(LoginRequiredMixin, CreateView):
+    model = Book
+    template_name = 'books/book_form.html'
+    fields = ['name', 'author', 'price']
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+
+
+class BookUpdate(LoginRequiredMixin,  UpdateView):
+    model = Book
+    template_name = 'books/book_form.html'
+    fields = ['name', 'author', 'price']
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        book = self.get_object()
+        if self.request.user == book.creator:
+            return True
+        return False
+
+
+class BookDetailView(DetailView):
     model = Book
     template_name = 'books/details.html'
 
 
-class Test:
-    def test(self):
-        return HttpResponse("This is Test Page")
+class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Book
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.creator:
+            return True
+        return False

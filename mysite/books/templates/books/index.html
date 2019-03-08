@@ -1,7 +1,7 @@
 {% extends 'mysite/base.html' %}
 
 {% block top %}
-<!--<a href="#" class="btn btn-secondary btn-lg " role="button" aria-pressed="true">Add Book</a>-->
+<a href="{% url 'books:add-book' %}" class="btn btn-secondary btn-lg " role="button" aria-pressed="true">Add Book</a>
 {% endblock %}
 
 {% block body %}

@@ -37,7 +37,7 @@
         </div>
 
     <div class="nav navbar-nav navbar-right">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav navbar-right">
             {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="btn btn-primary" href="{% url 'users:profile' %}" role="button">Profile</a>
@@ -58,7 +58,7 @@
 </nav>
 
 
-<div>{% block top %}{% endblock %}</div>
+<div class="top-container">{% block top %}{% endblock %}</div>
 
 <div class="container">
     {% block body %}
