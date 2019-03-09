@@ -130,6 +130,7 @@ navbar-nav
   width: 125px;
   margin-right: 20px;
   margin-bottom: 16px;
+  padding: 0px 22px 12px 0px;
 }
 
 .account-heading {
@@ -144,4 +145,8 @@ padding: 1% 9% 0 0;
 .navbar-right{
 padding-bottom: 0px;
     padding-top: 0px;
+}
+
+.list-body{
+ width: 65%;
 }
