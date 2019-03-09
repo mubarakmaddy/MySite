@@ -1,9 +1,6 @@
-from django.shortcuts import render
-
-def home(request):
-
-    template = 'mysite/home.html'
-    return render(request, template)
+from django.shortcuts import redirect
 
 
-
+def redirect_view(request):
+    response = redirect('/blog/')
+    return response

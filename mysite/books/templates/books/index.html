@@ -10,7 +10,7 @@
 
 {% if object_list %}
 
-<ul class="book_list">
+<div class="body-block">
     {% for book in object_list %}
 
     <article class="media content-section">
@@ -30,7 +30,7 @@
         </div>
     </article>
     {% endfor %}
-</ul>
+</div>
 {% else %}
 <p>No books are available.</p>
 {% endif %}

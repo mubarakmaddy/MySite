@@ -130,7 +130,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'books:index'
+LOGIN_REDIRECT_URL = 'blog:blog-home'
 LOGIN_URL = 'users:myapp-login'
 
 

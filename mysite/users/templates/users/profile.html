@@ -1,7 +1,7 @@
 {% extends "mysite/base.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
-<ul class="blog_list">
+<div class="body-block">
     <div class="content-section">
         <div class="media">
             <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
@@ -19,11 +19,11 @@
 
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-online-info" type="submit">Update</button>
+                <button class="btn btn-secondary btn-lg" type="submit">Update</button>
             </div>
         </form>
     </div>
 
-</ul>
+</div>
 
 {% endblock %}

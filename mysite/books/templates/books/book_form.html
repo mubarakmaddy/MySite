@@ -1,8 +1,8 @@
-{% extends 'users/base.html' %}
+{% extends 'mysite/base.html' %}
 {% load crispy_forms_tags %}
-{% block content %}
-<div class="container">
-    <div class="content-section">
+{% block body %}
+<div class="body-block ">
+    <div class="content-section create-form">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -11,7 +11,7 @@
 
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-online-info" type="submit">Add</button>
+                <button class="btn btn-secondary btn-lg" type="submit">Add</button>
             </div>
         </form>
     </div>
