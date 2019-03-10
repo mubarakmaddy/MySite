@@ -72,6 +72,8 @@ class BookDetailView(DetailView):
 
 class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Book
+    template_name = 'books/delete-book.html'
+    success_url = '/books'
 
     def test_func(self):
         post = self.get_object()
