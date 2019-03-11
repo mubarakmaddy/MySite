@@ -8,7 +8,9 @@
 
 {% block body %}
 <div class="body-block">
-    {% for object in posts %}
+
+    {% for object in myposts %}
+    {% if object.author == user %}
     <article class="media content-section">
         <div class="media-body">
             <div class="article-metadata">
@@ -20,7 +22,10 @@
             </p>
         </div>
     </article>
+
+    {% endif %}
     {% endfor %}
+
 </div>
 {% endblock  %}  <!--no need to use content after endblock-->
 

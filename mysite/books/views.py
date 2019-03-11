@@ -22,6 +22,7 @@
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse
 from django.views.generic import (
     ListView,
     DetailView,
@@ -51,8 +52,11 @@ class BookCreate(LoginRequiredMixin, CreateView):
 
 class BookUpdate(LoginRequiredMixin,  UpdateView):
     model = Book
-    template_name = 'books/book_form.html'
+    template_name = 'books/update-book.html'
     fields = ['name', 'author', 'price']
+
+    def get_success_url(self):
+        return reverse('books:detail', args=[self.get_object().id])
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
@@ -72,6 +76,8 @@ class BookDetailView(DetailView):
 
 class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Book
+    template_name = 'books/delete-book.html'
+    success_url = '/books'
 
     def test_func(self):
         post = self.get_object()

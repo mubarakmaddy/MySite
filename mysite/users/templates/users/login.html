@@ -1,9 +1,11 @@
-{% extends 'users/base.html' %}
-{% load crispy_forms_tags %}
 <body>
+{% extends 'mysite/base.html' %}
+{% load crispy_forms_tags %}
 
-{% block content %}
-<div class="container">
+{% block nav %} {% endblock %}
+{% block body %}
+<div class="body-block">
+<div class="user-form">
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
@@ -13,7 +15,7 @@
 
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-online-info" type="submit">Sign in</button>
+                <button class="btn btn-secondary btn-lg" type="submit">Sign in</button>
             </div>
         </form>
         <div class="border-top pt-3">
@@ -24,7 +26,6 @@
         </div>
     </div>
 </div>
+</div>
 {% endblock %}
-
-</body>
 

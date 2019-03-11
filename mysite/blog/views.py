@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import (
     ListView,
     DetailView,
@@ -25,6 +26,16 @@ class PostListView(ListView):
     ordering = ['-date_posted']
 
 
+class MyPostsListView(ListView):
+    model = Post
+    template_name = 'blog/my-posts.html'
+    context_object_name = 'myposts'
+    ordering = ['-date_posted']
+
+    def get_queryset(self):
+        print(self.request.user)
+
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post-detail.html'
@@ -33,6 +44,8 @@ class PostDetailView(DetailView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
+    template_name = 'blog/delete-post.html'
+    success_url = '/'
 
     def test_func(self):
         post = self.get_object()
@@ -53,8 +66,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    template_name = 'blog/create-post.html'
+    template_name = 'blog/update-post.html'
     fields = ['title', 'content']
+
+    def get_success_url(self):
+        return reverse('blog:blog-detail', args=[self.get_object().id])
 
     def form_valid(self, form):
         form.instance.author = self.request.user

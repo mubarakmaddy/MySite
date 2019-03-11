@@ -1,18 +1,31 @@
 {% extends 'mysite/base.html' %}
 
 {% block body %}
-<ul class="blog_detail">
+<div class="body-block">
 
-<article class="media content-section">
-    <div class="media-body">
-        <div class="article-metadata">
-            <h2>{{ object.title }}</h2>
-            <small class="text-muted">By {{ object.author }}</small>
-            <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <p>
+                    <a class="btn btn-link" href="{% url 'blog:blog-home' %}">←Back</a>
+                    {% if object.author == user %}
+
+                    <a class="view-actions" href="{% url 'blog:blog-delete' object.id %}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                    <a class="view-actions" href="{% url 'blog:blog-update' object.id %}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    {% endif %}
+                </p>
+                <h2>{{ object.title }}</h2>
+                <small class="text-muted">By {{ object.author }}</small>
+                <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
+
+            </div>
+            <p class="article-content">{{ object.content }}</p>
         </div>
-        <p class="article-content">{{ object.content }}</p>
-    </div>
-</article>
+    </article>
 
-</ul>
+</div>
 {% endblock  %}  <!--no need to use content after endblock-->
