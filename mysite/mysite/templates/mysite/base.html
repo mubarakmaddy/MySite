@@ -30,7 +30,7 @@
                     <a class="nav-link" href="{% url 'books:index' %}">Books<span class="sr-only">(current)</span></a>
                 </li>
                 <!--<li class="nav-item active">-->
-                    <!--<a class="nav-link" href="#">Friends<span class="sr-only">(current)</span></a>-->
+                <!--<a class="nav-link" href="#">Friends<span class="sr-only">(current)</span></a>-->
                 <!--</li>-->
             </ul>
         </div>
@@ -41,7 +41,8 @@
                 <li class="nav-item">
                     <a class="btn btn-primary btn-top-nav" href="{% url 'users:profile' %}" role="button">Profile</a>
                 <li class="nav-item">
-                    <a class="btn btn-primary btn-top-nav" href="{% url 'users:myapp-logout' %}" role="button">Log out</a>
+                    <a class="btn btn-primary btn-top-nav" href="{% url 'users:myapp-logout' %}" role="button">Log
+                        out</a>
                 </li>
                 </li>
                 {% else %}
@@ -49,13 +50,23 @@
                     <a class="btn btn-primary btn-top-nav" href="{% url 'users:myapp-login' %}" role="button">Log in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary btn-top-nav" href="{% url 'users:myapp-signup' %}" role="button">Sign Up</a>
+                    <a class="btn btn-primary btn-top-nav" href="{% url 'users:myapp-signup' %}" role="button">Sign
+                        Up</a>
                 </li>
                 {% endif %}
             </ul>
         </div>
-    </nav>
-    {% endblock %}
+
+        <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" href="#">My Blogs<span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" href="#">Friends<span class="sr-only">(current)</span></a>-->
+        <!--</li>-->
+
+
+</nav>
+{% endblock %}
 </div>
 
 <div class="top-container">{% block top %}{% endblock %}</div>
