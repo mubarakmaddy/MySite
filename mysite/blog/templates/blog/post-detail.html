@@ -7,12 +7,15 @@
         <div class="media-body">
             <div class="article-metadata">
                 <p>
+                    <a class="btn btn-link" href="{% url 'blog:blog-home' %}">←Back</a>
+                    {% if object.author == user %}
                     <a href="{% url 'blog:blog-delete' object.id %}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                     <a href="{% url 'blog:blog-update' object.id %}">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
+                    {% endif %}
                 </p>
                 <h2>{{ object.title }}</h2>
                 <small class="text-muted">By {{ object.author }}</small>

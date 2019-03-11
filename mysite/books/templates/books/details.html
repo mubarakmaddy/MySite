@@ -1,8 +1,30 @@
 {% extends 'mysite/base.html' %}
+
 {% block body %}
+<div class="body-block">
 
-<body class="details-body">
-<h1 class="book-header">{{ book }}</h1>
-</body>
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <p>
+                    <a  class="btn btn-link" href="{% url 'books:index' %}">←Back</a>
+                    {%if object.creator == user %}
+                    <a href="{% url 'books:delete-book' object.id %}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                    <a href="{% url 'books:update-book' object.id %}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    {% endif %}
+                </p>
+                <h2>{{ book.name }}</h2>
 
-{% endblock %}
+
+            </div>
+            <small class="text-muted">By {{ book.author }}</small>
+            <small class="text-muted">₹ {{ book.price}}</small>
+        </div>
+    </article>
+
+</div>
+{% endblock  %}  <!--no need to use content after endblock-->
