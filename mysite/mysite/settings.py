@@ -33,9 +33,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'mysite.apps.MysiteConfig',
+    'crispy_forms',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
-    'jobs.apps.JobsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,6 +125,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'books:index'
+LOGIN_REDIRECT_URL = 'blog:blog-home'
+LOGIN_URL = 'users:myapp-login'
+
+

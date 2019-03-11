@@ -7,11 +7,10 @@ a{
     color: 343a40;
     text-decoration: none;
     font-size: 20px;
-    font-family: monospace;
 }
 
-ul{
-    padding: 50px;
+.body-block{
+    padding: 30px 200px 50px 200px;
     list-style-type: none;
 }
 
@@ -23,34 +22,25 @@ li{
     height: 50px;
 
 }
-.book-header{
-    color: 343a40;
-    font-size: 20px;
-    font-family: monospace;
-    padding: 50px;
-}
-.details-body{
-    background: white;
-}
 
 .nav-link{
     font-size: 19px;
 }
 
-.btn-outline-secondary {
-    color: #ffffff;
-    padding-top: 5px;
-}
-.btn-primary{
+.btn-top-nav{
     float: right;
-    background-color: 343a40;
-    width: 100px;
-    background-color: 343a40;
-
+    background-color: #343a40 !important;
+    width: 100px !important;
+    height: 40px !important;
+    padding-top: 9px !important;
 
 }
+.navbar-right{
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-right: 10px !important;
+}
 
-85 lines (68 sloc) 1.1 KB
 body {
   background: #fafafa;
   color: #333333;
@@ -124,14 +114,49 @@ a.article-title:hover {
   height: 25px;
   vertical-align: middle;
 }
-
+navbar-nav
 .account-img {
   height: 125px;
   width: 125px;
   margin-right: 20px;
   margin-bottom: 16px;
+  padding: 0px 22px 12px 0px;
 }
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.top-container{
+float: right;
+padding: 1% 9% 0 0;
+}
+
+
+
+.list-body{
+ width: 65%;
+}
+
+
+.create-form{
+  margin: auto;
+  width: 75%;
+}
+
+.btn-lg{
+        padding: 5px 15px 5px 15px;
+}
+
+.element-right{
+    position: absolute;
+    right: 15px;
+
+
+}
+.view-actions{
+    float: right;
+    padding: 5px 5px 0px 5px;
+
+
 }

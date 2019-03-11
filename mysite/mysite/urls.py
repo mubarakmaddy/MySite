@@ -15,19 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
-
+from .views import redirect_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'mysite'
 
 urlpatterns = [
-    path('blog/', include('blog.urls', namespace="blog")),
+    path('', redirect_view),
     path('books/', include('books.urls', namespace="books")),
-    path('', include('users.urls', namespace="signup")),
-    path('jobs/', include('jobs.urls', namespace="jobs")),
-    path('home/', views.home, name='mysite-home'),
+    path('blog/', include('blog.urls', namespace="blog")),
+    path('users/', include('users.urls', namespace="users")),
     path('admin/', admin.site.urls),
 
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
